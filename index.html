@@ -3,243 +3,253 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="CalcVerse - All-in-One Calculator & AI Blog">
-<meta name="keywords" content="calculator, scientific calculator, BMI, loan, currency, AI blog">
-<title>CalcVerse - Single Page Hub</title>
+<title>Calculator Universe</title>
 <style>
-body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f4f9;}
-header {background:#2d2f36; color:white; padding:1rem; text-align:center;}
-nav {display:flex; justify-content:center; background:#444; flex-wrap:wrap;}
-nav button {color:white; background:#444; border:none; padding:0.8rem 1rem; margin:2px; cursor:pointer; border-radius:5px;}
-nav button:hover {background:#666;}
-.container {padding:2rem; max-width:1000px; margin:auto;}
-.section {display:none; background:white; padding:1.5rem; border-radius:10px; margin-bottom:2rem; box-shadow:0 2px 8px rgba(0,0,0,0.1);}
-input, select, button, textarea {padding:0.5rem; margin:0.3rem; font-size:1rem; border-radius:5px; border:1px solid #ccc;}
-button.calc-btn {background:#2d2f36; color:white; cursor:pointer;}
-button.calc-btn:hover {background:#444;}
-footer {background:#2d2f36; color:white; text-align:center; padding:1rem; margin-top:2rem;}
-.blog-post {background:#eef; padding:1rem; margin-bottom:1rem; border-radius:10px;}
+body {font-family: Arial,sans-serif; margin:0; background:#f0f4f8;}
+header {background:#4a90e2; color:white; text-align:center; padding:20px;}
+nav {display:flex; flex-wrap:wrap; justify-content:center; background:#fff;}
+nav button {margin:5px; padding:10px 15px; border:none; border-radius:8px; cursor:pointer; font-weight:bold; background:#4a90e2; color:white;}
+nav button.active, nav button:hover {background:#357ABD;}
+.container {display:none; max-width:400px; margin:20px auto; padding:20px; background:white; border-radius:12px;}
+input, select, textarea {width:95%; padding:10px; margin:10px 0; border-radius:6px; border:1px solid #ccc; font-size:16px;}
+button.calc-btn {background:#4a90e2; color:white; width:100%; margin-top:10px; cursor:pointer; padding:12px; font-size:16px; border-radius:6px;}
+.calc-pad {display:grid; grid-template-columns:repeat(4,1fr); gap:10px;}
+.calc-pad button{padding:15px; font-size:18px; border:none; border-radius:6px; background:#4a90e2; color:white; cursor:pointer;}
+.calc-pad button:hover{background:#357ABD;}
+button.clear{background:#e63946;}
+button.clear:hover{background:#d62828;}
+.result {margin-top:12px; font-weight:bold;}
+footer{margin-top:20px; text-align:center; padding:15px; background:#4a90e2; color:white;}
+@media(max-width:420px){.container{width:95%;} nav button{width:45%; margin:5px 2%;}}
 </style>
 </head>
 <body>
+
 <header>
-<h1>CalcVerse</h1>
-<p>All-in-One Calculators & AI Blog</p>
+<h1>Calculator Universe 🌌</h1>
+<p>All-in-One Multi Calculator</p>
 </header>
 
 <nav>
-<button onclick="showSection('basic')">Basic</button>
-<button onclick="showSection('scientific')">Scientific</button>
-<button onclick="showSection('unit')">Unit</button>
-<button onclick="showSection('currency')">Currency</button>
-<button onclick="showSection('loan')">Loan</button>
-<button onclick="showSection('bmi')">BMI</button>
-<button onclick="showSection('percentage')">Percentage</button>
-<button onclick="showSection('blog')">Blog</button>
-<button onclick="showSection('about')">About</button>
-<button onclick="showSection('contact')">Contact</button>
+<button onclick="showSection('basic')" id="nav-basic">Basic</button>
+<button onclick="showSection('scientific')" id="nav-scientific">Scientific</button>
+<button onclick="showSection('bmi')" id="nav-bmi">BMI</button>
+<button onclick="showSection('loan')" id="nav-loan">Loan</button>
+<button onclick="showSection('percentage')" id="nav-percentage">Percentage</button>
+<button onclick="showSection('age')" id="nav-age">Age</button>
+<button onclick="showSection('unit')" id="nav-unit">Unit</button>
+<button onclick="showSection('discount')" id="nav-discount">Discount</button>
 </nav>
 
-<div class="container">
 <!-- Basic Calculator -->
-<div class="section" id="basic">
+<div class="container" id="basic">
 <h2>Basic Calculator</h2>
-<input type="text" id="basicDisplay" disabled style="width:90%; font-size:1.5rem;"><br>
-<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:5px; margin-top:1rem;">
-<button class="calc-btn" onclick="press('7','basicDisplay')">7</button>
-<button class="calc-btn" onclick="press('8','basicDisplay')">8</button>
-<button class="calc-btn" onclick="press('9','basicDisplay')">9</button>
-<button class="calc-btn" onclick="press('/','basicDisplay')">÷</button>
-<button class="calc-btn" onclick="press('4','basicDisplay')">4</button>
-<button class="calc-btn" onclick="press('5','basicDisplay')">5</button>
-<button class="calc-btn" onclick="press('6','basicDisplay')">6</button>
-<button class="calc-btn" onclick="press('*','basicDisplay')">×</button>
-<button class="calc-btn" onclick="press('1','basicDisplay')">1</button>
-<button class="calc-btn" onclick="press('2','basicDisplay')">2</button>
-<button class="calc-btn" onclick="press('3','basicDisplay')">3</button>
-<button class="calc-btn" onclick="press('-','basicDisplay')">−</button>
-<button class="calc-btn" onclick="press('0','basicDisplay')">0</button>
-<button class="calc-btn" onclick="press('.','basicDisplay')">.</button>
-<button class="calc-btn" onclick="calculate('basicDisplay')">=</button>
-<button class="calc-btn" onclick="press('+','basicDisplay')">+</button>
-<button class="calc-btn" onclick="clearDisplay('basicDisplay')" style="grid-column: span 4; background:#e63946;">C</button>
+<input type="text" id="basicDisplay" disabled placeholder="0">
+<div class="calc-pad">
+<button onclick="press('7','basicDisplay')">7</button>
+<button onclick="press('8','basicDisplay')">8</button>
+<button onclick="press('9','basicDisplay')">9</button>
+<button onclick="press('/','basicDisplay')">÷</button>
+
+<button onclick="press('4','basicDisplay')">4</button>
+<button onclick="press('5','basicDisplay')">5</button>
+<button onclick="press('6','basicDisplay')">6</button>
+<button onclick="press('*','basicDisplay')">×</button>
+
+<button onclick="press('1','basicDisplay')">1</button>
+<button onclick="press('2','basicDisplay')">2</button>
+<button onclick="press('3','basicDisplay')">3</button>
+<button onclick="press('-','basicDisplay')">−</button>
+
+<button onclick="press('0','basicDisplay')">0</button>
+<button onclick="press('.','basicDisplay')">.</button>
+<button onclick="calculate('basicDisplay')">=</button>
+<button onclick="press('+','basicDisplay')">+</button>
+
+<button onclick="clearDisplay('basicDisplay')" class="clear" style="grid-column: span 4;">C</button>
 </div>
 </div>
 
 <!-- Scientific Calculator -->
-<div class="section" id="scientific">
+<div class="container" id="scientific">
 <h2>Scientific Calculator</h2>
-<input type="text" id="sciDisplay" disabled style="width:90%; font-size:1.5rem;"><br>
-<div style="display:grid; grid-template-columns:repeat(5,1fr); gap:5px; margin-top:1rem;">
-<button class="calc-btn" onclick="press('7','sciDisplay')">7</button>
-<button class="calc-btn" onclick="press('8','sciDisplay')">8</button>
-<button class="calc-btn" onclick="press('9','sciDisplay')">9</button>
-<button class="calc-btn" onclick="press('/','sciDisplay')">÷</button>
-<button class="calc-btn" onclick="press('Math.sqrt(','sciDisplay')">√</button>
-<button class="calc-btn" onclick="press('4','sciDisplay')">4</button>
-<button class="calc-btn" onclick="press('5','sciDisplay')">5</button>
-<button class="calc-btn" onclick="press('6','sciDisplay')">6</button>
-<button class="calc-btn" onclick="press('*','sciDisplay')">×</button>
-<button class="calc-btn" onclick="press('Math.pow(','sciDisplay')">x²/x^y</button>
-<button class="calc-btn" onclick="press('1','sciDisplay')">1</button>
-<button class="calc-btn" onclick="press('2','sciDisplay')">2</button>
-<button class="calc-btn" onclick="press('3','sciDisplay')">3</button>
-<button class="calc-btn" onclick="press('-','sciDisplay')">−</button>
-<button class="calc-btn" onclick="press('Math.sin(','sciDisplay')">sin</button>
-<button class="calc-btn" onclick="press('0','sciDisplay')">0</button>
-<button class="calc-btn" onclick="press('.','sciDisplay')">.</button>
-<button class="calc-btn" onclick="calculate('sciDisplay')">=</button>
-<button class="calc-btn" onclick="press('+','sciDisplay')">+</button>
-<button class="calc-btn" onclick="press('Math.cos(','sciDisplay')">cos</button>
-<button class="calc-btn" onclick="clearDisplay('sciDisplay')" style="grid-column: span 5; background:#e63946;">C</button>
+<input type="text" id="sciDisplay" disabled placeholder="0">
+<div class="calc-pad">
+<button onclick="press('7','sciDisplay')">7</button>
+<button onclick="press('8','sciDisplay')">8</button>
+<button onclick="press('9','sciDisplay')">9</button>
+<button onclick="press('/','sciDisplay')">÷</button>
+<button onclick="press('Math.sqrt(','sciDisplay')">√</button>
+
+<button onclick="press('4','sciDisplay')">4</button>
+<button onclick="press('5','sciDisplay')">5</button>
+<button onclick="press('6','sciDisplay')">6</button>
+<button onclick="press('*','sciDisplay')">×</button>
+<button onclick="press('Math.pow(','sciDisplay')">x²/x^y</button>
+
+<button onclick="press('1','sciDisplay')">1</button>
+<button onclick="press('2','sciDisplay')">2</button>
+<button onclick="press('3','sciDisplay')">3</button>
+<button onclick="press('-','sciDisplay')">−</button>
+<button onclick="press('Math.sin(','sciDisplay')">sin</button>
+
+<button onclick="press('0','sciDisplay')">0</button>
+<button onclick="press('.','sciDisplay')">.</button>
+<button onclick="press('(','sciDisplay')">(</button>
+<button onclick="press(')','sciDisplay')">)</button>
+<button onclick="press('Math.cos(','sciDisplay')">cos</button>
+
+<button onclick="press('Math.PI','sciDisplay')">π</button>
+<button onclick="press('+','sciDisplay')">+</button>
+<button onclick="press('Math.tan(','sciDisplay')">tan</button>
+<button onclick="calculate('sciDisplay')" class="span2">=</button>
+
+<button onclick="clearDisplay('sciDisplay')" class="clear" style="grid-column: span 5;">C</button>
 </div>
 </div>
 
-<!-- Unit Converter -->
-<div class="section" id="unit">
-<h2>Unit Converter (Meter ↔ Kilometer)</h2>
-<input type="number" id="unitInput" placeholder="Value">
-<select id="unitSelect">
-<option value="km">Meter → Kilometer</option>
-<option value="m">Kilometer → Meter</option>
-</select>
-<button class="calc-btn" onclick="convertUnit()">Convert</button>
-<p id="unitResult"></p>
+<!-- BMI -->
+<div class="container" id="bmi">
+<h2>BMI Calculator</h2>
+<input type="number" id="weight" placeholder="Weight (kg)">
+<input type="number" id="height" placeholder="Height (m)">
+<button class="calc-btn" onclick="calculateBMI()">Calculate BMI</button>
+<div class="result" id="bmiResult"></div>
 </div>
 
-<!-- Currency Converter -->
-<div class="section" id="currency">
-<h2>Currency Converter (USD ↔ NPR)</h2>
-<input type="number" id="currencyInput" placeholder="Amount">
-<select id="currencySelect">
-<option value="toNPR">USD → NPR</option>
-<option value="toUSD">NPR → USD</option>
-</select>
-<button class="calc-btn" onclick="convertCurrency()">Convert</button>
-<p id="currencyResult"></p>
-</div>
-
-<!-- Loan Calculator -->
-<div class="section" id="loan">
+<!-- Loan -->
+<div class="container" id="loan">
 <h2>Loan Calculator</h2>
 <input type="number" id="loanAmount" placeholder="Principal Amount">
 <input type="number" id="loanRate" placeholder="Interest Rate %">
 <input type="number" id="loanYears" placeholder="Years">
 <button class="calc-btn" onclick="calculateLoan()">Calculate</button>
-<p id="loanResult"></p>
+<div class="result" id="loanResult"></div>
 </div>
 
-<!-- BMI Calculator -->
-<div class="section" id="bmi">
-<h2>BMI Calculator</h2>
-<input type="number" id="bmiWeight" placeholder="Weight (kg)">
-<input type="number" id="bmiHeight" placeholder="Height (m)">
-<button class="calc-btn" onclick="calculateBMI()">Calculate</button>
-<p id="bmiResult"></p>
-</div>
-
-<!-- Percentage Calculator -->
-<div class="section" id="percentage">
+<!-- Percentage -->
+<div class="container" id="percentage">
 <h2>Percentage Calculator</h2>
 <input type="number" id="percentPart" placeholder="Part Value">
 <input type="number" id="percentTotal" placeholder="Total Value">
 <button class="calc-btn" onclick="calculatePercentage()">Calculate</button>
-<p id="percentResult"></p>
+<div class="result" id="percentResult"></div>
 </div>
 
-<!-- AI Blog -->
-<div class="section" id="blog">
-<h2>AI Generated Blog</h2>
-<div id="blogPosts"></div>
+<!-- Age -->
+<div class="container" id="age">
+<h2>Age Calculator</h2>
+<input type="date" id="dob">
+<button class="calc-btn" onclick="calculateAge()">Calculate Age</button>
+<div class="result" id="ageResult"></div>
 </div>
 
-<!-- About -->
-<div class="section" id="about">
-<h2>About CalcVerse</h2>
-<p>CalcVerse is your all-in-one online hub for calculators, converters, and AI-generated content. Designed for students, professionals, and anyone needing quick calculations and tutorials.</p>
+<!-- Unit -->
+<div class="container" id="unit">
+<h2>Unit Converter</h2>
+<input type="number" id="unitInput" placeholder="Value">
+<select id="unitType">
+<option value="km-mile">Kilometer → Mile</option>
+<option value="mile-km">Mile → Kilometer</option>
+<option value="kg-lb">Kg → Pound</option>
+<option value="lb-kg">Pound → Kg</option>
+<option value="c-f">Celsius → Fahrenheit</option>
+<option value="f-c">Fahrenheit → Celsius</option>
+</select>
+<button class="calc-btn" onclick="convertUnit()">Convert</button>
+<div class="result" id="unitResult"></div>
 </div>
 
-<!-- Contact -->
-<div class="section" id="contact">
-<h2>Contact</h2>
-<form onsubmit="alert('Message sent!'); return false;">
-<input type="text" placeholder="Name" required><br>
-<input type="email" placeholder="Email" required><br>
-<textarea placeholder="Message" rows="4" required></textarea><br>
-<button type="submit" class="calc-btn">Send</button>
-</form>
+<!-- Discount -->
+<div class="container" id="discount">
+<h2>Discount Calculator</h2>
+<input type="number" id="originalPrice" placeholder="Original Price">
+<input type="number" id="discountPercent" placeholder="Discount %">
+<button class="calc-btn" onclick="calculateDiscount()">Calculate</button>
+<div class="result" id="discountResult"></div>
 </div>
 
 <footer>
-<p>Developed by Aslam Shekhe | © 2025 CalcVerse</p>
+<p>© 2025 Calculator Universe | Developed by Aslam Shekhe</p>
 </footer>
 
 <script>
-// Section toggle
 function showSection(id){
-  const sections = document.querySelectorAll('.section');
-  sections.forEach(s => s.style.display='none');
+  document.querySelectorAll('.container').forEach(c=>c.style.display='none');
   document.getElementById(id).style.display='block';
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById('nav-'+id).classList.add('active');
 }
 
-// Basic functions
+// Basic / Scientific
 function press(val, displayId){ document.getElementById(displayId).value += val; }
-function calculate(displayId){ try{ document.getElementById(displayId).value = eval(document.getElementById(displayId).value); } catch{ document.getElementById(displayId).value='Error'; } }
 function clearDisplay(displayId){ document.getElementById(displayId).value=''; }
-
-// Unit Converter
-function convertUnit(){
-  let val = parseFloat(document.getElementById('unitInput').value);
-  let unit = document.getElementById('unitSelect').value;
-  if(unit==='km') document.getElementById('unitResult').innerText = val/1000 + ' km';
-  else document.getElementById('unitResult').innerText = val*1000 + ' m';
+function calculate(displayId){
+  try{
+    let val = document.getElementById(displayId).value;
+    val = val.replace(/÷/g,'/').replace(/×/g,'*');
+    document.getElementById(displayId).value = eval(val);
+  }catch{ document.getElementById(displayId).value='Error'; }
 }
 
-// Currency Converter (dummy rates)
-function convertCurrency(){
-  let val = parseFloat(document.getElementById('currencyInput').value);
-  let cur = document.getElementById('currencySelect').value;
-  if(cur==='toNPR') document.getElementById('currencyResult').innerText = val*130 + ' NPR';
-  else document.getElementById('currencyResult').innerText = val/130 + ' USD';
+// BMI
+function calculateBMI(){
+  let w=parseFloat(document.getElementById('weight').value);
+  let h=parseFloat(document.getElementById('height').value);
+  let bmi=w/(h*h);
+  document.getElementById('bmiResult').innerText='BMI: '+bmi.toFixed(2);
 }
 
-// Loan Calculator
+// Loan
 function calculateLoan(){
   let P=parseFloat(document.getElementById('loanAmount').value);
   let R=parseFloat(document.getElementById('loanRate').value)/100;
   let T=parseFloat(document.getElementById('loanYears').value);
   let total = P*(1+R*T);
-  document.getElementById('loanResult').innerText = 'Total Payment: '+total.toFixed(2);
-}
-
-// BMI
-function calculateBMI(){
-  let w=parseFloat(document.getElementById('bmiWeight').value);
-  let h=parseFloat(document.getElementById('bmiHeight').value);
-  let bmi = w/(h*h);
-  document.getElementById('bmiResult').innerText = 'BMI: '+bmi.toFixed(2);
+  document.getElementById('loanResult').innerText='Total Payment: '+total.toFixed(2);
 }
 
 // Percentage
 function calculatePercentage(){
   let part=parseFloat(document.getElementById('percentPart').value);
   let total=parseFloat(document.getElementById('percentTotal').value);
-  let perc = (part/total)*100;
-  document.getElementById('percentResult').innerText = perc.toFixed(2)+'%';
+  let perc=(part/total)*100;
+  document.getElementById('percentResult').innerText=perc.toFixed(2)+'%';
 }
 
-// AI Blog
-const topics = ["AI Tools", "Online Earning", "MidJourney Tutorials", "YouTube Automation", "Tech Tips"];
-const blogContainer = document.getElementById('blogPosts');
-topics.forEach(t=>{
-  const post = document.createElement('div');
-  post.classList.add('blog-post');
-  post.innerHTML = `<h4>${t}</h4><p>This is an AI-generated post about ${t}. Tips, tutorials and updates included.</p>`;
-  blogContainer.appendChild(post);
-});
+// Age
+function calculateAge(){
+  let dob=new Date(document.getElementById('dob').value);
+  let diff=new Date() - dob;
+  let age=Math.floor(diff/(1000*60*60*24*365.25));
+  document.getElementById('ageResult').innerText='Age: '+age+' years';
+}
 
-// Show Home by default
+// Unit
+function convertUnit(){
+  let val=parseFloat(document.getElementById('unitInput').value);
+  let type=document.getElementById('unitType').value;
+  let result;
+  if(type=='km-mile') result=val*0.621371+' mi';
+  else if(type=='mile-km') result=val/0.621371+' km';
+  else if(type=='kg-lb') result=val*2.20462+' lb';
+  else if(type=='lb-kg') result=val/2.20462+' kg';
+  else if(type=='c-f') result=(val*9/5)+32+' °F';
+  else if(type=='f-c') result=(val-32)*5/9+' °C';
+  document.getElementById('unitResult').innerText=result;
+}
+
+// Discount
+function calculateDiscount(){
+  let price=parseFloat(document.getElementById('originalPrice').value);
+  let disc=parseFloat(document.getElementById('discountPercent').value);
+  let finalPrice=price*(1-disc/100);
+  document.getElementById('discountResult').innerText='Final Price: '+finalPrice.toFixed(2);
+}
+
+// Show default
 showSection('basic');
 </script>
+
 </body>
   </html>
