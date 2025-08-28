@@ -3,24 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculator Universe</title>
+<title>Calculator Universe 🌌</title>
+<meta name="description" content="Calculator Universe: All-in-One online calculators for Basic, Scientific, BMI, Loan, Percentage, Age, Unit Converter & Discount.">
+<meta name="keywords" content="calculator, online calculator, BMI, loan, discount, percentage, age, unit converter, scientific calculator, basic calculator, math tools">
 <style>
-body {font-family: Arial,sans-serif; margin:0; background:#f0f4f8;}
-header {background:#4a90e2; color:white; text-align:center; padding:20px;}
-nav {display:flex; flex-wrap:wrap; justify-content:center; background:#fff;}
-nav button {margin:5px; padding:10px 15px; border:none; border-radius:8px; cursor:pointer; font-weight:bold; background:#4a90e2; color:white;}
-nav button.active, nav button:hover {background:#357ABD;}
-.container {display:none; max-width:400px; margin:20px auto; padding:20px; background:white; border-radius:12px;}
-input, select, textarea {width:95%; padding:10px; margin:10px 0; border-radius:6px; border:1px solid #ccc; font-size:16px;}
-button.calc-btn {background:#4a90e2; color:white; width:100%; margin-top:10px; cursor:pointer; padding:12px; font-size:16px; border-radius:6px;}
-.calc-pad {display:grid; grid-template-columns:repeat(4,1fr); gap:10px;}
-.calc-pad button{padding:15px; font-size:18px; border:none; border-radius:6px; background:#4a90e2; color:white; cursor:pointer;}
-.calc-pad button:hover{background:#357ABD;}
+body{font-family:Arial,sans-serif;margin:0;background:#f1f5f9;color:#1e293b;}
+header{background:#4a90e2;color:white;text-align:center;padding:20px;}
+nav{display:flex;flex-wrap:wrap;justify-content:center;background:#fff;padding:10px 0;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+nav button{margin:5px;padding:10px 18px;border:none;border-radius:8px;cursor:pointer;background:#4a90e2;color:white;font-weight:bold;transition:0.3s;}
+nav button.active,nav button:hover{background:#357ABD;}
+.container{display:none;max-width:480px;margin:25px auto;padding:20px;background:white;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);}
+input,select{width:95%;padding:10px;margin:10px 0;border-radius:6px;border:1px solid #cbd5e1;font-size:16px;}
+button.calc-btn,.calc-pad button{background:#4a90e2;color:white;width:100%;margin-top:10px;cursor:pointer;padding:12px;font-size:16px;border-radius:6px;border:none;transition:0.3s;}
+button.calc-btn:hover,.calc-pad button:hover{background:#357ABD;}
+.calc-pad{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px;}
 button.clear{background:#e63946;}
 button.clear:hover{background:#d62828;}
-.result {margin-top:12px; font-weight:bold;}
-footer{margin-top:20px; text-align:center; padding:15px; background:#4a90e2; color:white;}
-@media(max-width:420px){.container{width:95%;} nav button{width:45%; margin:5px 2%;}}
+.result{margin-top:12px;font-weight:bold;color:#0f172a;}
+footer{margin-top:20px;text-align:center;padding:15px;background:#4a90e2;color:white;font-size:14px;}
+@media(max-width:480px){.container{width:92%;}nav button{width:45%;margin:5px 2%;}}
 </style>
 </head>
 <body>
@@ -41,7 +42,7 @@ footer{margin-top:20px; text-align:center; padding:15px; background:#4a90e2; col
 <button onclick="showSection('discount')" id="nav-discount">Discount</button>
 </nav>
 
-<!-- Basic Calculator -->
+<!-- Basic -->
 <div class="container" id="basic">
 <h2>Basic Calculator</h2>
 <input type="text" id="basicDisplay" disabled placeholder="0">
@@ -50,27 +51,23 @@ footer{margin-top:20px; text-align:center; padding:15px; background:#4a90e2; col
 <button onclick="press('8','basicDisplay')">8</button>
 <button onclick="press('9','basicDisplay')">9</button>
 <button onclick="press('/','basicDisplay')">÷</button>
-
 <button onclick="press('4','basicDisplay')">4</button>
 <button onclick="press('5','basicDisplay')">5</button>
 <button onclick="press('6','basicDisplay')">6</button>
 <button onclick="press('*','basicDisplay')">×</button>
-
 <button onclick="press('1','basicDisplay')">1</button>
 <button onclick="press('2','basicDisplay')">2</button>
 <button onclick="press('3','basicDisplay')">3</button>
 <button onclick="press('-','basicDisplay')">−</button>
-
 <button onclick="press('0','basicDisplay')">0</button>
 <button onclick="press('.','basicDisplay')">.</button>
 <button onclick="calculate('basicDisplay')">=</button>
 <button onclick="press('+','basicDisplay')">+</button>
-
 <button onclick="clearDisplay('basicDisplay')" class="clear" style="grid-column: span 4;">C</button>
 </div>
 </div>
 
-<!-- Scientific Calculator -->
+<!-- Scientific -->
 <div class="container" id="scientific">
 <h2>Scientific Calculator</h2>
 <input type="text" id="sciDisplay" disabled placeholder="0">
@@ -80,30 +77,25 @@ footer{margin-top:20px; text-align:center; padding:15px; background:#4a90e2; col
 <button onclick="press('9','sciDisplay')">9</button>
 <button onclick="press('/','sciDisplay')">÷</button>
 <button onclick="press('Math.sqrt(','sciDisplay')">√</button>
-
 <button onclick="press('4','sciDisplay')">4</button>
 <button onclick="press('5','sciDisplay')">5</button>
 <button onclick="press('6','sciDisplay')">6</button>
 <button onclick="press('*','sciDisplay')">×</button>
 <button onclick="press('Math.pow(','sciDisplay')">x²/x^y</button>
-
 <button onclick="press('1','sciDisplay')">1</button>
 <button onclick="press('2','sciDisplay')">2</button>
 <button onclick="press('3','sciDisplay')">3</button>
 <button onclick="press('-','sciDisplay')">−</button>
 <button onclick="press('Math.sin(','sciDisplay')">sin</button>
-
 <button onclick="press('0','sciDisplay')">0</button>
 <button onclick="press('.','sciDisplay')">.</button>
 <button onclick="press('(','sciDisplay')">(</button>
 <button onclick="press(')','sciDisplay')">)</button>
 <button onclick="press('Math.cos(','sciDisplay')">cos</button>
-
 <button onclick="press('Math.PI','sciDisplay')">π</button>
 <button onclick="press('+','sciDisplay')">+</button>
 <button onclick="press('Math.tan(','sciDisplay')">tan</button>
-<button onclick="calculate('sciDisplay')" class="span2">=</button>
-
+<button onclick="calculate('sciDisplay')">=</button>
 <button onclick="clearDisplay('sciDisplay')" class="clear" style="grid-column: span 5;">C</button>
 </div>
 </div>
@@ -112,7 +104,10 @@ footer{margin-top:20px; text-align:center; padding:15px; background:#4a90e2; col
 <div class="container" id="bmi">
 <h2>BMI Calculator</h2>
 <input type="number" id="weight" placeholder="Weight (kg)">
-<input type="number" id="height" placeholder="Height (m)">
+<div style="display:flex; gap:10px;">
+<input type="number" id="heightFeet" placeholder="Height (ft)">
+<input type="number" id="heightInch" placeholder="Height (in)">
+</div>
 <button class="calc-btn" onclick="calculateBMI()">Calculate BMI</button>
 <div class="result" id="bmiResult"></div>
 </div>
@@ -170,34 +165,44 @@ footer{margin-top:20px; text-align:center; padding:15px; background:#4a90e2; col
 </div>
 
 <footer>
-<p>© 2025 Calculator Universe | Developed by Aslam Shekhe</p>
+<p>© 2025 Calculator Universe | Developed by <b>Aslam Shekhe</b></p>
 </footer>
 
 <script>
+// Default section
 function showSection(id){
   document.querySelectorAll('.container').forEach(c=>c.style.display='none');
   document.getElementById(id).style.display='block';
   document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
   document.getElementById('nav-'+id).classList.add('active');
 }
+showSection('basic');
 
-// Basic / Scientific
-function press(val, displayId){ document.getElementById(displayId).value += val; }
-function clearDisplay(displayId){ document.getElementById(displayId).value=''; }
+// Basic/Scientific functions
+function press(val,displayId){document.getElementById(displayId).value+=val;}
+function clearDisplay(displayId){document.getElementById(displayId).value='';}
 function calculate(displayId){
   try{
-    let val = document.getElementById(displayId).value;
-    val = val.replace(/÷/g,'/').replace(/×/g,'*');
-    document.getElementById(displayId).value = eval(val);
-  }catch{ document.getElementById(displayId).value='Error'; }
+    let val=document.getElementById(displayId).value;
+    val=val.replace(/÷/g,'/').replace(/×/g,'*');
+    document.getElementById(displayId).value=eval(val);
+  }catch{document.getElementById(displayId).value='Error';}
 }
 
 // BMI
 function calculateBMI(){
   let w=parseFloat(document.getElementById('weight').value);
-  let h=parseFloat(document.getElementById('height').value);
+  let ft=parseFloat(document.getElementById('heightFeet').value)||0;
+  let inch=parseFloat(document.getElementById('heightInch').value)||0;
+  if(!w&&(ft===0&&inch===0)){document.getElementById('bmiResult').innerText="Enter valid inputs"; return;}
+  let h=(ft*0.3048)+(inch*0.0254);
   let bmi=w/(h*h);
-  document.getElementById('bmiResult').innerText='BMI: '+bmi.toFixed(2);
+  let category="";
+  if(bmi<18.5) category=" (Underweight)";
+  else if(bmi<24.9) category=" (Normal)";
+  else if(bmi<29.9) category=" (Overweight)";
+  else category=" (Obese)";
+  document.getElementById('bmiResult').innerText='BMI: '+bmi.toFixed(2)+category;
 }
 
 // Loan
@@ -205,7 +210,8 @@ function calculateLoan(){
   let P=parseFloat(document.getElementById('loanAmount').value);
   let R=parseFloat(document.getElementById('loanRate').value)/100;
   let T=parseFloat(document.getElementById('loanYears').value);
-  let total = P*(1+R*T);
+  if(!P||!R||!T){document.getElementById('loanResult').innerText="Enter valid inputs"; return;}
+  let total=P*(1+R*T);
   document.getElementById('loanResult').innerText='Total Payment: '+total.toFixed(2);
 }
 
@@ -213,6 +219,7 @@ function calculateLoan(){
 function calculatePercentage(){
   let part=parseFloat(document.getElementById('percentPart').value);
   let total=parseFloat(document.getElementById('percentTotal').value);
+  if(!part||!total){document.getElementById('percentResult').innerText="Enter valid inputs"; return;}
   let perc=(part/total)*100;
   document.getElementById('percentResult').innerText=perc.toFixed(2)+'%';
 }
@@ -220,7 +227,8 @@ function calculatePercentage(){
 // Age
 function calculateAge(){
   let dob=new Date(document.getElementById('dob').value);
-  let diff=new Date() - dob;
+  if(!dob.getTime()){document.getElementById('ageResult').innerText="Enter valid DOB"; return;}
+  let diff=new Date()-dob;
   let age=Math.floor(diff/(1000*60*60*24*365.25));
   document.getElementById('ageResult').innerText='Age: '+age+' years';
 }
@@ -229,13 +237,14 @@ function calculateAge(){
 function convertUnit(){
   let val=parseFloat(document.getElementById('unitInput').value);
   let type=document.getElementById('unitType').value;
+  if(!val){document.getElementById('unitResult').innerText="Enter valid number"; return;}
   let result;
-  if(type=='km-mile') result=val*0.621371+' mi';
-  else if(type=='mile-km') result=val/0.621371+' km';
-  else if(type=='kg-lb') result=val*2.20462+' lb';
-  else if(type=='lb-kg') result=val/2.20462+' kg';
-  else if(type=='c-f') result=(val*9/5)+32+' °F';
-  else if(type=='f-c') result=(val-32)*5/9+' °C';
+  if(type=='km-mile') result=(val*0.621371).toFixed(2)+' mi';
+  else if(type=='mile-km') result=(val/0.621371).toFixed(2)+' km';
+  else if(type=='kg-lb') result=(val*2.20462).toFixed(2)+' lb';
+  else if(type=='lb-kg') result=(val/2.20462).toFixed(2)+' kg';
+  else if(type=='c-f') result=((val*9/5)+32).toFixed(2)+' °F';
+  else if(type=='f-c') result=((val-32)*5/9).toFixed(2)+' °C';
   document.getElementById('unitResult').innerText=result;
 }
 
@@ -243,12 +252,10 @@ function convertUnit(){
 function calculateDiscount(){
   let price=parseFloat(document.getElementById('originalPrice').value);
   let disc=parseFloat(document.getElementById('discountPercent').value);
+  if(!price||!disc){document.getElementById('discountResult').innerText="Enter valid inputs"; return;}
   let finalPrice=price*(1-disc/100);
   document.getElementById('discountResult').innerText='Final Price: '+finalPrice.toFixed(2);
 }
-
-// Show default
-showSection('basic');
 </script>
 
 </body>
