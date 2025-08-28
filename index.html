@@ -4,42 +4,50 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Calculator Universe 🌌</title>
-<meta name="description" content="Calculator Universe: All-in-One online calculators for Basic, Scientific, BMI, Loan, Percentage, Age, Unit Converter & Discount.">
-<meta name="keywords" content="calculator, online calculator, BMI, loan, discount, percentage, age, unit converter, scientific calculator, basic calculator, math tools">
+<meta name="description" content="Calculator Universe: All-in-One online calculators including Basic, Scientific, BMI, Loan, Percentage, Age, Unit Converter, Discount, EMI, Tip, Random Number, Password Generator.">
+<meta name="keywords" content="calculator, online calculator, BMI, loan, discount, percentage, age, unit converter, scientific calculator, basic calculator, EMI, tip, random number, password generator, math tools">
 <style>
-body{font-family:Arial,sans-serif;margin:0;background:#f1f5f9;color:#1e293b;}
-header{background:#4a90e2;color:white;text-align:center;padding:20px;}
+:root {
+  --bg-color:#f1f5f9;
+  --text-color:#1e293b;
+  --primary:#4a90e2;
+  --primary-hover:#357ABD;
+  --danger:#e63946;
+  --danger-hover:#d62828;
+}
+body.light {--bg-color:#f1f5f9;--text-color:#1e293b;}
+body.dark {--bg-color:#1e293b;--text-color:#f1f5f9;}
+body{font-family:Arial,sans-serif;margin:0;background:var(--bg-color);color:var(--text-color);transition:0.3s;}
+header{background:var(--primary);color:white;text-align:center;padding:20px;font-style:italic;}
 nav{display:flex;flex-wrap:wrap;justify-content:center;background:#fff;padding:10px 0;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
-nav button{margin:5px;padding:10px 18px;border:none;border-radius:8px;cursor:pointer;background:#4a90e2;color:white;font-weight:bold;transition:0.3s;}
-nav button.active,nav button:hover{background:#357ABD;}
+nav button{margin:5px;padding:10px 18px;border:none;border-radius:8px;cursor:pointer;background:var(--primary);color:white;font-weight:bold;transition:0.3s;}
+nav button.active,nav button:hover{background:var(--primary-hover);}
 .container{display:none;max-width:480px;margin:25px auto;padding:20px;background:white;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);}
 input,select{width:95%;padding:10px;margin:10px 0;border-radius:6px;border:1px solid #cbd5e1;font-size:16px;}
-button.calc-btn,.calc-pad button{background:#4a90e2;color:white;width:100%;margin-top:10px;cursor:pointer;padding:12px;font-size:16px;border-radius:6px;border:none;transition:0.3s;}
-button.calc-btn:hover,.calc-pad button:hover{background:#357ABD;}
+button.calc-btn,.calc-pad button{background:var(--primary);color:white;width:100%;margin-top:10px;cursor:pointer;padding:12px;font-size:16px;border-radius:6px;border:none;transition:0.3s;}
+button.calc-btn:hover,.calc-pad button:hover{background:var(--primary-hover);}
 .calc-pad{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px;}
-button.clear{background:#e63946;}
-button.clear:hover{background:#d62828;}
-.result{margin-top:12px;font-weight:bold;color:#0f172a;}
-footer{margin-top:20px;text-align:center;padding:15px;background:#4a90e2;color:white;font-size:14px;}
+button.clear{background:var(--danger);}
+button.clear:hover{background:var(--danger-hover);}
+.result{margin-top:12px;font-weight:bold;color:var(--text-color);}
+footer{margin-top:20px;text-align:center;padding:15px;background:var(--primary);color:white;font-size:14px;}
+.tab-buttons{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;justify-content:center;}
+.tab-buttons button{flex:1 1 auto;width:auto;padding:8px 12px;}
 @media(max-width:480px){.container{width:92%;}nav button{width:45%;margin:5px 2%;}}
 </style>
 </head>
-<body>
+<body class="light">
 
 <header>
 <h1>Calculator Universe 🌌</h1>
 <p>All-in-One Multi Calculator</p>
+<button onclick="toggleTheme()" style="margin-top:10px;padding:8px 12px;border:none;border-radius:6px;cursor:pointer;">Light/Dark</button>
 </header>
 
 <nav>
 <button onclick="showSection('basic')" id="nav-basic">Basic</button>
 <button onclick="showSection('scientific')" id="nav-scientific">Scientific</button>
-<button onclick="showSection('bmi')" id="nav-bmi">BMI</button>
-<button onclick="showSection('loan')" id="nav-loan">Loan</button>
-<button onclick="showSection('percentage')" id="nav-percentage">Percentage</button>
-<button onclick="showSection('age')" id="nav-age">Age</button>
-<button onclick="showSection('unit')" id="nav-unit">Unit</button>
-<button onclick="showSection('discount')" id="nav-discount">Discount</button>
+<button onclick="showSection('all')" id="nav-all">All Calculators</button>
 </nav>
 
 <!-- Basic -->
@@ -100,9 +108,26 @@ footer{margin-top:20px;text-align:center;padding:15px;background:#4a90e2;color:w
 </div>
 </div>
 
-<!-- BMI -->
-<div class="container" id="bmi">
-<h2>BMI Calculator</h2>
+<!-- All Calculators -->
+<div class="container" id="all">
+<h2>All Calculators</h2>
+
+<div class="tab-buttons">
+<button onclick="showCalcTab('bmi')">BMI</button>
+<button onclick="showCalcTab('loan')">Loan</button>
+<button onclick="showCalcTab('percentage')">Percentage</button>
+<button onclick="showCalcTab('age')">Age</button>
+<button onclick="showCalcTab('unit')">Unit</button>
+<button onclick="showCalcTab('discount')">Discount</button>
+<button onclick="showCalcTab('emi')">EMI</button>
+<button onclick="showCalcTab('tip')">Tip</button>
+<button onclick="showCalcTab('random')">Random</button>
+<button onclick="showCalcTab('password')">Password</button>
+</div>
+
+<!-- Tab Contents -->
+<div class="calc-tab" id="bmi" style="display:none;">
+<h3>BMI Calculator</h3>
 <input type="number" id="weight" placeholder="Weight (kg)">
 <div style="display:flex; gap:10px;">
 <input type="number" id="heightFeet" placeholder="Height (ft)">
@@ -112,9 +137,8 @@ footer{margin-top:20px;text-align:center;padding:15px;background:#4a90e2;color:w
 <div class="result" id="bmiResult"></div>
 </div>
 
-<!-- Loan -->
-<div class="container" id="loan">
-<h2>Loan Calculator</h2>
+<div class="calc-tab" id="loan" style="display:none;">
+<h3>Loan Calculator</h3>
 <input type="number" id="loanAmount" placeholder="Principal Amount">
 <input type="number" id="loanRate" placeholder="Interest Rate %">
 <input type="number" id="loanYears" placeholder="Years">
@@ -122,26 +146,23 @@ footer{margin-top:20px;text-align:center;padding:15px;background:#4a90e2;color:w
 <div class="result" id="loanResult"></div>
 </div>
 
-<!-- Percentage -->
-<div class="container" id="percentage">
-<h2>Percentage Calculator</h2>
+<div class="calc-tab" id="percentage" style="display:none;">
+<h3>Percentage Calculator</h3>
 <input type="number" id="percentPart" placeholder="Part Value">
 <input type="number" id="percentTotal" placeholder="Total Value">
 <button class="calc-btn" onclick="calculatePercentage()">Calculate</button>
 <div class="result" id="percentResult"></div>
 </div>
 
-<!-- Age -->
-<div class="container" id="age">
-<h2>Age Calculator</h2>
+<div class="calc-tab" id="age" style="display:none;">
+<h3>Age Calculator</h3>
 <input type="date" id="dob">
 <button class="calc-btn" onclick="calculateAge()">Calculate Age</button>
 <div class="result" id="ageResult"></div>
 </div>
 
-<!-- Unit -->
-<div class="container" id="unit">
-<h2>Unit Converter</h2>
+<div class="calc-tab" id="unit" style="display:none;">
+<h3>Unit Converter</h3>
 <input type="number" id="unitInput" placeholder="Value">
 <select id="unitType">
 <option value="km-mile">Kilometer → Mile</option>
@@ -155,13 +176,44 @@ footer{margin-top:20px;text-align:center;padding:15px;background:#4a90e2;color:w
 <div class="result" id="unitResult"></div>
 </div>
 
-<!-- Discount -->
-<div class="container" id="discount">
-<h2>Discount Calculator</h2>
+<div class="calc-tab" id="discount" style="display:none;">
+<h3>Discount Calculator</h3>
 <input type="number" id="originalPrice" placeholder="Original Price">
 <input type="number" id="discountPercent" placeholder="Discount %">
 <button class="calc-btn" onclick="calculateDiscount()">Calculate</button>
 <div class="result" id="discountResult"></div>
+</div>
+
+<div class="calc-tab" id="emi" style="display:none;">
+<h3>EMI Calculator</h3>
+<input type="number" id="emiAmount" placeholder="Loan Amount">
+<input type="number" id="emiRate" placeholder="Interest Rate %">
+<input type="number" id="emiYears" placeholder="Years">
+<button class="calc-btn" onclick="calculateEMI()">Calculate</button>
+<div class="result" id="emiResult"></div>
+</div>
+
+<div class="calc-tab" id="tip" style="display:none;">
+<h3>Tip Calculator</h3>
+<input type="number" id="billAmount" placeholder="Bill Amount">
+<input type="number" id="tipPercent" placeholder="Tip %">
+<button class="calc-btn" onclick="calculateTip()">Calculate</button>
+<div class="result" id="tipResult"></div>
+</div>
+
+<div class="calc-tab" id="random" style="display:none;">
+<h3>Random Number Generator</h3>
+<input type="number" id="randMin" placeholder="Min">
+<input type="number" id="randMax" placeholder="Max">
+<button class="calc-btn" onclick="generateRandom()">Generate</button>
+<div class="result" id="randomResult"></div>
+</div>
+
+<div class="calc-tab" id="password" style="display:none;">
+<h3>Password Generator</h3>
+<input type="number" id="passLength" placeholder="Length">
+<button class="calc-btn" onclick="generatePassword()">Generate</button>
+<div class="result" id="passwordResult"></div>
 </div>
 
 <footer>
@@ -169,7 +221,13 @@ footer{margin-top:20px;text-align:center;padding:15px;background:#4a90e2;color:w
 </footer>
 
 <script>
-// Default section
+// Theme toggle
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.body.classList.toggle('light');
+}
+
+// Show main sections
 function showSection(id){
   document.querySelectorAll('.container').forEach(c=>c.style.display='none');
   document.getElementById(id).style.display='block';
@@ -178,7 +236,13 @@ function showSection(id){
 }
 showSection('basic');
 
-// Basic/Scientific functions
+// Show All Calculators tabs
+function showCalcTab(id){
+  document.querySelectorAll('.calc-tab').forEach(c=>c.style.display='none');
+  document.getElementById(id).style.display='block';
+}
+
+// Basic/Scientific
 function press(val,displayId){document.getElementById(displayId).value+=val;}
 function clearDisplay(displayId){document.getElementById(displayId).value='';}
 function calculate(displayId){
@@ -252,11 +316,49 @@ function convertUnit(){
 function calculateDiscount(){
   let price=parseFloat(document.getElementById('originalPrice').value);
   let disc=parseFloat(document.getElementById('discountPercent').value);
-  if(!price||!disc){document.getElementById('discountResult').innerText="Enter valid inputs"; return;}
+  if(!price||!disc){document.getElementById('discountResult').innerText="Enter validinputs"; return;}
   let finalPrice=price*(1-disc/100);
   document.getElementById('discountResult').innerText='Final Price: '+finalPrice.toFixed(2);
+}
+
+// EMI
+function calculateEMI(){
+  let P=parseFloat(document.getElementById('emiAmount').value);
+  let R=parseFloat(document.getElementById('emiRate').value)/100/12;
+  let N=parseFloat(document.getElementById('emiYears').value)*12;
+  if(!P||!R||!N){document.getElementById('emiResult').innerText="Enter valid inputs"; return;}
+  let emi=(P*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);
+  document.getElementById('emiResult').innerText='EMI: '+emi.toFixed(2);
+}
+
+// Tip
+function calculateTip(){
+  let bill=parseFloat(document.getElementById('billAmount').value);
+  let tip=parseFloat(document.getElementById('tipPercent').value);
+  if(!bill||!tip){document.getElementById('tipResult').innerText="Enter valid inputs"; return;}
+  let totalTip=(bill*tip/100);
+  document.getElementById('tipResult').innerText='Tip: '+totalTip.toFixed(2)+' | Total: '+(bill+totalTip).toFixed(2);
+}
+
+// Random Number
+function generateRandom(){
+  let min=parseInt(document.getElementById('randMin').value);
+  let max=parseInt(document.getElementById('randMax').value);
+  if(isNaN(min)||isNaN(max)||min>max){document.getElementById('randomResult').innerText="Enter valid range"; return;}
+  let rand=Math.floor(Math.random()*(max-min+1))+min;
+  document.getElementById('randomResult').innerText='Random Number: '+rand;
+}
+
+// Password Generator
+function generatePassword(){
+  let len=parseInt(document.getElementById('passLength').value);
+  if(isNaN(len)||len<=0){document.getElementById('passwordResult').innerText="Enter valid length"; return;}
+  let chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
+  let pass="";
+  for(let i=0;i<len;i++){pass+=chars.charAt(Math.floor(Math.random()*chars.length));}
+  document.getElementById('passwordResult').innerText='Password: '+pass;
 }
 </script>
 
 </body>
-  </html>
+</html>
